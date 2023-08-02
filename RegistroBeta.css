@@ -148,9 +148,9 @@ body{
     --switch-width: 50px;
     --switch-height: 20px;
     /* circle */
-    --circle-diameter: 32px;
-    --circle-bg: rgb(0, 56, 146);
-    --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2);
+    --circulo-diameter: 32px;
+    --circulo-bg: rgb(0, 56, 146);
+    --circulo-inset: calc((var(--circulo-diameter) - var(--switch-height)) / 2);
 }
   
 .boton_claro_oscuro input {
@@ -211,12 +211,12 @@ body{
   
   /* actions */
   
-.ui-switch input:checked+.deslizante .circulo {
+.boton_claro_oscuro input:checked+.deslizante .circulo {
     left: calc(100% - var(--circulo-diameter));
     background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTQuMiAyLjVsLS43IDEuOC0xLjguNyAxLjguNy43IDEuOC42LTEuOEw2LjcgNWwtMS45LS43LS42LTEuOHptMTUgOC4zYTYuNyA2LjcgMCAxMS02LjYtNi42IDUuOCA1LjggMCAwMDYuNiA2LjZ6IiAvPgo8L3N2Zz4=");
 }
   
-.ui-switch input:active+.deslizante .circulo::before {
+.boton_claro_oscuro input:active+.deslizante .circulo::before {
     -webkit-transition: 0s;
     -o-transition: 0s;
     transition: 0s;
