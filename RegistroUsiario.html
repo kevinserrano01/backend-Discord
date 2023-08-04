@@ -3,20 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuario</title>
-    <link rel="stylesheet" href="RegistroBeta.css">
+    <title>Version Delta</title>
+    <link rel="stylesheet" href="RegistroUsuario.css">
 </head>
 <body>
-    <form class="formulario">
-        <label class="boton_claro_oscuro">
-            <input type="checkbox">
-            <div class="deslizante">
-              <div class="circulo"></div>
-            </div>
-        </label>
-        <p class="titulo">Register</p>
-        <p class="mensaje">Signup now and get full access to our app. </p>
-        <div class="carga_datos">
+    <form class="form">
+        <div class="divReg"> 
+            <p class="title">Register</p>
+            <p class="message">Signup now and get full access to our app. </p>
+        </div>
+            <div class="flex">
             <label>
                 <input required="" placeholder="" type="text" class="input">
                 <span>Firstname</span>
@@ -25,8 +21,9 @@
             <label>
                 <input required="" placeholder="" type="text" class="input">
                 <span>Lastname</span>
-            </label> 
-        </div> 
+            </label>
+        </div>  
+                
         <label>
             <input required="" placeholder="" type="email" class="input">
             <span>Email</span>
@@ -43,8 +40,8 @@
         <label>
             <input required="" placeholder="" type="date" class="input"> 
         </label>
-        <button class="boton_registro">Sing Up</button>
-        <p class="inicio_sesion">Already have an acount ? <a href="#">Sign in</a> </p>
+        <button class="submit">Submit</button>
+        <p class="signin">Already have an acount ? <a href="#">Sign in</a> </p>
     </form>
 </body>
 </html>
