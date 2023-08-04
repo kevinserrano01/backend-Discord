@@ -1,0 +1,43 @@
+<!-- Crea un botón y agregarle un evento para que cambie de color -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Botón Cambiar Color (Estilo moderno)</title>
+    <style>
+        /* Estilos para el botón */
+        button {
+            width: 200px;
+            height: 100px;
+            border: 3px solid #315cfd;
+            border-radius: 45px;
+            cursor: pointer;
+            background: white;
+            font-size: 1.2em;
+            font-weight: 550;
+            font-family: 'Montserrat', sans-serif;
+        }
+      
+    </style>
+</head>
+<body>
+    <button id="cambiarColorBtn">Haz clic para cambiar de color</button>
+
+    <script>
+        // Función para cambiar el color del botón
+        function cambiarColor() {
+            // Generar un color aleatorio en formato hexadecimal (#RRGGBB)
+            const colorAleatorio = "#" + Math.floor(Math.random()*16777215).toString(16);
+
+            // Asignar el nuevo color al botón
+            cambiarColorBtn.style.backgroundColor = colorAleatorio;
+        }
+
+        // Obtener el botón mediante su ID
+        const cambiarColorBtn = document.getElementById('cambiarColorBtn');
+
+        // Agregar el evento 'click' al botón
+        cambiarColorBtn.addEventListener('click', cambiarColor);
+    </script>
+</body>
+</html>
