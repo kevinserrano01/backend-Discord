@@ -103,7 +103,7 @@ body{
     font-size: 0.9em;
 }
   
-.formulario label .input:focus + span,.form label .input:valid + span {
+.formulario label .input:focus + span,.formulario label .input:valid + span {
     top: 30px;
     font-size: 0.7em;
     font-weight: 600;
