@@ -20,10 +20,10 @@ def listar_usuarios():
     """Endpoint para mostrar todos los usuarios de la base de datos"""
     return UserController.get_users()
 
-@user_bp.route('/usuario<int:usuario_id>', methods=['GET'])
-def get_usuario(usuario_id):
+@user_bp.route('/usuarios/<string:username>', methods=['GET', 'POST'])
+def get_usuario(username):
     """Endpoint para mostrar mostar un usuario la base de datos"""    
-    return UserController.get_user(usuario_id)
+    return UserController.get_user(username)
 
 @user_bp.route('/crear_usuario')
 def crear_usuario():

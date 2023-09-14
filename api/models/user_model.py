@@ -72,7 +72,6 @@ class User:
             return cls(
                 user_id = result[0],
                 username = result[1],
-                password = result[2],
                 email = result[3],
                 first_name = result[4],
                 last_name = result[5],

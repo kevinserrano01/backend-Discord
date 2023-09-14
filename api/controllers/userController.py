@@ -54,34 +54,25 @@ class UserController:
         return {"message": "Sesion cerrada"}, 200
 
     @classmethod
-    def get_user(self, id_usuario):
+    def get_user(cls, username):
         """Retrieves a user from the database, by means of an id"""
-        sql = "SELECT * FROM users WHERE user_id = %"
-        params = id_usuario,
-        resultado = DatabaseConnection.fetch_one(sql, params)
-        if resultado is not None:
-            usuario_id = resultado[0]
-            nombre= resultado[1]
-            apellido= resultado[2]
-            email= resultado[3]
-            nombre_usuario= resultado[4]
-            password= resultado[5]
-            fecha_nacimiento= resultado[6]
-            
-            # ! Solo deviuelve username en la API
-            datos = {
-                'usuario_id': usuario_id,
-                'username': nombre,
-                'apellido': apellido,
-                "email": email,
-                'nombre_usuario': nombre_usuario,
-                'password': password,
-                'fecha_nacimiento': fecha_nacimiento
-            }
-            
-            return datos, 200
+        user = User.get(User(username = username))
+        if user is not None:
+            return {
+                "user_id": user.user_id,
+                "username": user.username,
+                "email": user.email,
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+                "date_of_birth": user.date_of_birth,
+                "phone_number": user.phone_number,
+                "creation_date": user.creation_date,
+                "last_login": user.last_login,
+                "status_id": user.status_id,
+                "role_id": user.role_id
+            }, 200
         else:
-            return "El usuario no existe"    
+            return {"message": "Usuario no encontrado"}, 404
         
 
     @classmethod
@@ -95,7 +86,6 @@ class UserController:
                 lista_usuarios.append({
                     'user_id': usuario[0],
                     'username': usuario[1],
-                    'password': usuario[2],
                     'email': usuario[3],
                     'first_name': usuario[4],
                     'last_name': usuario[5],
@@ -106,7 +96,7 @@ class UserController:
                     'status_id': usuario[10],
                     'role_id': usuario[11]
                 })
-        return lista_usuarios, 200
+        return jsonify(lista_usuarios), 200
 
     @classmethod
     def create_user(self):
@@ -159,7 +149,7 @@ class UserController:
 
     @classmethod
     def delete_user(self, user_id):
-        """Delete a customer from the database."""
+        """Delete a user from the database."""
         sql = "DELETE FROM users WHERE user_id = %s;"
         params = user_id,
         DatabaseConnection.execute_query(sql, params)
