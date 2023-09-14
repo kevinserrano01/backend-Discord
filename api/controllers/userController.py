@@ -1,6 +1,6 @@
 from flask import request, jsonify, session
 from api.database import *
-from ..models.model import User
+from ..models.user_model import User
 
 class UserController:
 
