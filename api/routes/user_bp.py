@@ -11,15 +11,19 @@ def iniciar_sesion():
 def ver_perfil():
     return UserController.show_profile()
 
-@user_bp.route('/usuario<int:usuario_id>', methods=['GET'])
-def get_usuario(usuario_id):
-    """Endpoint para mostrar mostar un usuario la base de datos"""    
-    return UserController.get_user(usuario_id)
+@user_bp.route('/logout', methods=['GET'])
+def cerrar_sesion():
+    return UserController.logout()
 
 @user_bp.route('/usuarios', methods=['GET'])
 def listar_usuarios():
     """Endpoint para mostrar todos los usuarios de la base de datos"""
     return UserController.get_users()
+
+@user_bp.route('/usuario<int:usuario_id>', methods=['GET'])
+def get_usuario(usuario_id):
+    """Endpoint para mostrar mostar un usuario la base de datos"""    
+    return UserController.get_user(usuario_id)
 
 @user_bp.route('/crear_usuario')
 def crear_usuario():

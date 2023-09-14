@@ -6,6 +6,7 @@ class UserController:
 
     @classmethod
     def login(cls):
+        """Iniciar sesion si esta registrado en la base de datos."""
         # data = request.json
         # user = User(
         #     username = data.get('username'),
@@ -26,6 +27,7 @@ class UserController:
         
     @classmethod
     def show_profile(cls):
+        """Ver perfil del usuario con la sesion activa en el navegador"""
         username = session.get('username')
         user = User.get(User(username = username))
         if user is not None:
@@ -44,6 +46,12 @@ class UserController:
             }, 200
         else:
             return {"message": "Usuario no encontrado"}, 404
+        
+    @classmethod
+    def logout(cls):
+        """Cerrar la sesion activa del navegador."""
+        session.pop('username', None)
+        return {"message": "Sesion cerrada"}, 200
 
     @classmethod
     def get_user(self, id_usuario):
@@ -148,8 +156,6 @@ class UserController:
             }, 200
         
         return datos
-
-
 
     @classmethod
     def delete_user(self, user_id):
