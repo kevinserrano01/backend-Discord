@@ -7,6 +7,10 @@ user_bp = Blueprint('user_bp', __name__)
 def iniciar_sesion():
     return UserController.login()
 
+@user_bp.route('/profile', methods=['GET'])
+def ver_perfil():
+    return UserController.show_profile()
+
 @user_bp.route('/usuario<int:usuario_id>', methods=['GET'])
 def get_usuario(usuario_id):
     """Endpoint para mostrar mostar un usuario la base de datos"""    

@@ -31,6 +31,22 @@ class User:
 
     def __str__(self) -> str:
         return f"Username: {self.username} - Password: {self.password}"
+    
+    # def serialize(self):
+    #     return {
+    #         "user_id": self.user_id,
+    #         "username": self.username,
+    #         "password": self.password,
+    #         "email": self.email,
+    #         "first_name": self.first_name,
+    #         "last_name": self.last_name,
+    #         "date_of_birth": self.date_of_birth,
+    #         "phone_number": self.phone_number,
+    #         "creation_date": self.creation_date,
+    #         "last_login": self.last_login,
+    #         "status": UserStatusModel.get(UserStatusModel(status_id = self.status_id)).serialize(),
+    #         "role": UserRoleModel.get(UserRoleModel(role_id = self.role_id)).serialize()
+    #     }
 
 
     @classmethod
@@ -44,3 +60,27 @@ class User:
         if result is not None:
             return True
         return False
+    
+    @classmethod
+    def get(cls, user):
+        query = """SELECT * FROM discord_app.users 
+        WHERE username = %(username)s"""
+        params = user.__dict__
+        result = DatabaseConnection.fetch_one(query, params=params)
+
+        if result is not None:
+            return cls(
+                user_id = result[0],
+                username = result[1],
+                password = result[2],
+                email = result[3],
+                first_name = result[4],
+                last_name = result[5],
+                date_of_birth = result[6],
+                phone_number = result[7],
+                creation_date = result[8],
+                last_login = result[9],
+                status_id = result[10],
+                role_id = result[11]
+            )
+        return None

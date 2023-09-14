@@ -23,6 +23,27 @@ class UserController:
         else:
             print(f"\033[91m{user}\033[0m")
             return {"message": "Usuario o contraseña incorrectos"}, 401
+        
+    @classmethod
+    def show_profile(cls):
+        username = session.get('username')
+        user = User.get(User(username = username))
+        if user is not None:
+            return {
+                "user_id": user.user_id,
+                "username": user.username,
+                "email": user.email,
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+                "date_of_birth": user.date_of_birth,
+                "phone_number": user.phone_number,
+                "creation_date": user.creation_date,
+                "last_login": user.last_login,
+                "status_id": user.status_id,
+                "role_id": user.role_id
+            }, 200
+        else:
+            return {"message": "Usuario no encontrado"}, 404
 
     @classmethod
     def get_user(self, id_usuario):
