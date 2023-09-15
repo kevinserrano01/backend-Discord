@@ -7,19 +7,19 @@ class UserController:
     @classmethod
     def login(cls):
         """Iniciar sesion si esta registrado en la base de datos."""
-        # data = request.json
-        # user = User(
-        #     username = data.get('username'),
-        #     password = data.get('password')
-        # )
-        username = request.args.get('username')
-        password = request.args.get('password')
-        user = User(username=username, password=password)
+        data = request.json
+        user = User(
+            username = data.get('username'),
+            password = data.get('password')
+        )
+        # username = request.args.get('username')
+        # password = request.args.get('password')
+        # user = User(username=username, password=password)
         
         if User.is_registered(user):
             print(f"\033[92m{user}\033[0m")
             # Esto significa que la aplicación web recordará el nombre de usuario del usuario mientras la sesión esté activa.
-            session['username'] = username
+            session['username'] = data.get('username')
             return {"message": "Sesion iniciada"}, 200
         else:
             print(f"\033[91m{user}\033[0m")
