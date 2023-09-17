@@ -1,4 +1,5 @@
 from api.database import DatabaseConnection
+from flask import request
 
 class User:
     # def __init__(self, user_id = None, username = None, password = None, email = None, first_name = None, last_name = None, date_of_birth = None, phone_number = None, creation_date = None, last_login = None, status_id = None, role_id = None):
@@ -83,3 +84,13 @@ class User:
                 role_id = result[11]
             )
         return None
+    
+    @classmethod
+    def create_user(cls, user):
+        """Create a user from the database"""
+        sql = """INSERT INTO discord_app.users (username, password, email, first_name, last_name, date_of_birth, phone_number, user_status_status_id, user_roles_role_id)
+                VALUES (%(username)s, %(password)s, %(email)s, %(first_name)s, %(last_name)s, %(date_of_birth)s, %(phone_number)s, %(status_id)s, %(role_id)s);
+            """
+        params = user.__dict__
+        DatabaseConnection.execute_query(sql, params=params)
+        return {"message": "Usuario Registrado"}, 201

@@ -26,6 +26,39 @@ class UserController:
             return {"message": "Usuario o contraseña incorrectos"}, 401
         
     @classmethod
+    def register(cls):
+        """Registrar usuario en la base de datos."""
+        # username = request.args.get('username')
+        # password = request.args.get('password')
+        # email = request.args.get('email')
+        # first_name = request.args.get('first_name')
+        # last_name = request.args.get('last_name')
+        # date_of_birth = request.args.get('fecha_nac')
+        # phone_number = request.args.get('phone')
+        # status_id = request.args.get('status_id')
+        # role_id = request.args.get('role_id')
+
+        data = request.json
+        user = User(
+            username=data.get('username'),
+            password=data.get('password'),
+            email=data.get('email'),
+            first_name=data.get('first_name'),
+            last_name=data.get('last_name'),
+            date_of_birth=data.get('date_of_birth'),
+            phone_number=data.get('phone_number'),
+            status_id=data.get('status_id'),
+            role_id=data.get('role_id')
+        )
+        
+        if User.is_registered(user):
+            print(f"\033[91m{user}\033[0m")
+            return {"message": "Este usuario ya fue creado, inicie sesion."}, 401
+        else:
+            print(f"\033[92m{user}\033[0m")
+            return User.create_user(user)
+        
+    @classmethod
     def show_profile(cls):
         """Ver perfil del usuario con la sesion activa en el navegador"""
         username = session.get('username')
@@ -98,31 +131,31 @@ class UserController:
                 })
         return jsonify(lista_usuarios), 200
 
-    @classmethod
-    def create_user(self):
-        """Create a user from the database"""
-        nombre = request.args.get('nombre')
-        apellido = request.args.get('apellido')
-        clave = request.args.get('clave')
-        email = request.args.get('email')
-        fecha_nacimiento = request.args.get('fecha_nacimiento')
+    # @classmethod
+    # def create_user(self):
+    #     """Create a user from the database"""
+    #     nombre = request.args.get('nombre')
+    #     apellido = request.args.get('apellido')
+    #     clave = request.args.get('clave')
+    #     email = request.args.get('email')
+    #     fecha_nacimiento = request.args.get('fecha_nacimiento')
 
-        sql = """INSERT INTO usuarios (nombre, apellido, clave, email, fecha_nacimiento)
-                VALUES (%s, %s, %s, %s, %s);
-            """
+    #     sql = """INSERT INTO usuarios (nombre, apellido, clave, email, fecha_nacimiento)
+    #             VALUES (%s, %s, %s, %s, %s);
+    #         """
 
-        params = nombre, apellido, clave, email, fecha_nacimiento,
-        DatabaseConnection.execute_query(sql, params)
+    #     params = nombre, apellido, clave, email, fecha_nacimiento,
+    #     DatabaseConnection.execute_query(sql, params)
 
-        datos = {
-            "nombre": nombre,
-            "apellido": apellido,
-            "clave": clave,
-            "email": email,
-            "fecha_nacimiento": fecha_nacimiento
-        }
+    #     datos = {
+    #         "nombre": nombre,
+    #         "apellido": apellido,
+    #         "clave": clave,
+    #         "email": email,
+    #         "fecha_nacimiento": fecha_nacimiento
+    #     }
 
-        return datos, 201
+    #     return datos, 201
 
     @classmethod
     def update_user(self, id_usuario):

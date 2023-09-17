@@ -4,7 +4,7 @@ body {
     background-color: #000000;
 }
 
-#link {
+.link {
     text-decoration: none;
     color: aliceblue;
 }
@@ -28,7 +28,7 @@ body {
 .columna1 {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
-    background-color: #003f5c;
+    background-color: #6e02fc;
     padding: 20px;
 }
 
@@ -39,7 +39,7 @@ body {
 }
 
 .columna2 {
-    background-color: #003f5c;
+    background-color: #6e02fc;
     padding: 20px;
 }
 
