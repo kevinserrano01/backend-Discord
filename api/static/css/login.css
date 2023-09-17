@@ -1,5 +1,5 @@
 body{
-    background-color: #4b007c;
+    background-color: #6e02fc;
 }
 
 .container{
@@ -102,7 +102,7 @@ body{
   }
   
   .button2:hover {
-    background-color: black;
+    background-color: #6e02fc;
     color: white;
   }
   
