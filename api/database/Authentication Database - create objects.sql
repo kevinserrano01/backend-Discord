@@ -27,3 +27,15 @@ CREATE TABLE users (
   CONSTRAINT fk_users_status_id FOREIGN KEY (status_id) REFERENCES user_status(status_id),
   CONSTRAINT fk_users_role_id FOREIGN KEY (role_id) REFERENCES user_roles(role_id)
 );
+
+CREATE TABLE servers (
+  server_id INT AUTO_INCREMENT PRIMARY KEY,
+  server_name VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE channels (
+  channel_id INT AUTO_INCREMENT PRIMARY KEY,
+  channel_name VARCHAR(100) NOT NULL UNIQUE,
+  server_id INT,
+  FOREIGN KEY (server_id) REFERENCES servers(server_id)
+);

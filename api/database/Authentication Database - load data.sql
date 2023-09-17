@@ -27,3 +27,9 @@ INSERT INTO users (
 ) VALUES (
   'Leo777', 'leo123', 'leo777@gmail.com', 'Leo', 'Gaspar', '2004-05-05', '387-532-123', 1, 1
 );
+
+INSERT INTO servers (server_name) 
+VALUES ('Programacion Web'),
+      ('Ingles'),
+      ('Coder House'),
+      ('UPATECO - Facultad');
