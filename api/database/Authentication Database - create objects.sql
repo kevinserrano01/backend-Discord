@@ -39,3 +39,11 @@ CREATE TABLE channels (
   server_id INT,
   FOREIGN KEY (server_id) REFERENCES servers(server_id)
 );
+
+CREATE TABLE Suscripciones (
+    suscripcion_id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    servidor_id INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES Usuarios(usuario_id),
+    FOREIGN KEY (servidor_id) REFERENCES Servidores(servidor_id)
+);

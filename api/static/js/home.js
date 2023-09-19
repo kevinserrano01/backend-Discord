@@ -17,6 +17,9 @@ function getUsername() {
         if (response.status === 200) {
             return response.json().then(data => {
                 document.getElementById("username").innerText = data.username;
+                document.getElementById("username1").innerText = data.username;
+                document.getElementById("username2").innerText = data.username;
+                document.getElementById("username3").innerText = data.username;
             });
         } else {
             return response.json().then(data => {
