@@ -1,5 +1,5 @@
 from api.database import DatabaseConnection
-from flask import request
+from flask import request, session
 
 class Server:
     def __init__(self, server_id=None, server_name=None):
@@ -21,6 +21,29 @@ class Server:
             return True
         return False
     
+
+    def guardar_en_tabla_intermedia():
+        user_name = session.get('username')
+        query = "SELECT user_id FROM discord_app.users WHERE username = %s"
+        parametro = (user_name,)
+        id_usuario_db = DatabaseConnection.fetch_one(query, params=parametro)
+        id_user_login = id_usuario_db[0] # Id del usuario logeado
+
+        # TOMAR EL TOTAL DE SEVIDORES QUE HAY EN LA BASE DE DATOS PARA COLOCARLO COMO PARAMETRO AQUI ABAJO..
+        consulta = "SELECT server_name FROM discord_app.servers;"
+        total_servers_db = DatabaseConnection.fetch_all(consulta)
+        total_servers = len(total_servers_db)
+
+        sql = """INSERT INTO discord_app.suscription (suscription_user_id, suscription_server_id)
+                VALUES (%s, %s);
+            """
+        params = (id_user_login, total_servers)
+        DatabaseConnection.execute_query(sql, params=params)
+
+        print('Usuario y servidor registrados con exito!')
+        return {"message": "Usuario y servidor registrados con exito!"}, 201
+    
+
     @classmethod
     def create_server(cls, server):
         """Create a server from the database"""
@@ -29,4 +52,11 @@ class Server:
             """
         params = server.__dict__
         DatabaseConnection.execute_query(sql, params=params)
+
+        cls.guardar_en_tabla_intermedia()
+
         return {"message": "Servidor Registrado con exito!"}, 201
+    
+
+
+    

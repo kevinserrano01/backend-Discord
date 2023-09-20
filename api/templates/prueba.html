@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba API</title>
+    <title>Modal Ejemplo</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/prueba.css">
 </head>
 <body>
-    <h1>Prueba consumiendo API</h1>
+    <!-- Botón para abrir el modal -->
+    <button class="open-modal-button">Abrir Modal</button>
+
+    <!-- El modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal-button">&times;</span>
+            <h2>Formulario</h2>
+            <form id="miFormulario">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </div>
+
+    <!-- Contenedor para mostrar la información enviada -->
+    <div id="informacion-container">
+        <!-- Aquí se mostrará la información enviada -->
+    </div>
 
     <script src="../static/js/pruebaAPI.js"></script>
 </body>
