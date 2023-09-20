@@ -14,7 +14,6 @@ function getProfile() {
     .then(response => {
         if (response.status === 200) {
             return response.json().then(data => {
-
                 document.getElementById("username").innerText = data.username;
                 document.getElementById("email").innerText = data.email;
                 document.getElementById("first_name").innerText = data.first_name;

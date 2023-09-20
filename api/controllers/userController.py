@@ -64,7 +64,10 @@ class UserController:
         """Ver perfil del usuario con la sesion activa en el navegador"""
         username = session.get('username')
         user = User.get(User(username = username))
+        servers = User.get_servers(User(username = username))
+        print(servers)
         if user is not None:
+            # servidores = ["Programacion Web", "Matematica", "Algoritmica", "Ingles"]
             return {
                 "user_id": user.user_id,
                 "username": user.username,
@@ -76,7 +79,8 @@ class UserController:
                 "creation_date": user.creation_date,
                 "last_login": user.last_login,
                 "status_id": user.status_id,
-                "role_id": user.role_id
+                "role_id": user.role_id,
+                "servers": servers
             }, 200
         else:
             return {"message": "Usuario no encontrado"}, 404

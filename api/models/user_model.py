@@ -94,3 +94,25 @@ class User:
         params = user.__dict__
         DatabaseConnection.execute_query(sql, params=params)
         return {"message": "Usuario Registrado"}, 201
+    
+    @classmethod
+    def get_servers(cls, user):
+        """Obtener todos los servidores creados o suscriptos por el usuario logeado"""
+        query = """
+                SELECT users.username, servers.server_name
+                FROM ((suscription 
+                INNER JOIN users
+                ON suscription.suscription_user_id = users.user_id) 
+                INNER JOIN servers
+                ON suscription.suscription_server_id = servers.server_id)
+                WHERE users.username = %(username)s
+            """
+        params = user.__dict__
+        result = DatabaseConnection.fetch_all(query, params=params)
+        list_servers = []
+
+        if result is not None:
+            for suscription in result:
+                list_servers.append(suscription[1])
+            return list_servers
+        return None
