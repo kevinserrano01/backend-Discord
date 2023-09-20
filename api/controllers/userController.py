@@ -50,6 +50,7 @@ class UserController:
             status_id=data.get('status_id'),
             role_id=data.get('role_id')
         )
+        print(user)
         
         if User.is_registered(user):
             print(f"\033[91m{user}\033[0m")
