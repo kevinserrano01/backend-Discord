@@ -14,16 +14,16 @@ body {
     height: 550px;
     margin-left: 20px;
     margin-right: 20px;
-    background: #6e02fc;
+    background: #5865f2;
     border-radius: 15px;
-    box-shadow: 1px 5px 60px 0px #8300fd;
+    box-shadow: 1px 5px 60px 0px #5865f2;
     /* text-align: center; */
    }
    
    .card .card-border-top {
     width: 60%;
     height: 3%;
-    background: #a454ff;
+    background: #7681fd;
     margin: auto;
     border-radius: 0px 0px 15px 15px;
    }
@@ -63,13 +63,13 @@ body {
     border-radius: 8px;
     border: none;
     margin-top: 30px;
-    background: #a454ff;
+    background: #6d79ff;
     color: white;
     font-weight: 600;
    }
    
    .card button:hover {
-    background: #c773ff;
+    background: #4b5aff;
     cursor: pointer;
    }
 

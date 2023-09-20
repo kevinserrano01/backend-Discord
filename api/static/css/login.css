@@ -1,5 +1,5 @@
 body{
-    background-color: #6e02fc;
+    background-color: #5865f2;
 }
 
 .container{
@@ -84,7 +84,7 @@ body{
   }
   
   .button1:hover {
-    background-color: black;
+    background-color: #5865f2;
     color: white;
   }
   
@@ -102,7 +102,7 @@ body{
   }
   
   .button2:hover {
-    background-color: #6e02fc;
+    background-color: #5865f2;
     color: white;
   }
   
