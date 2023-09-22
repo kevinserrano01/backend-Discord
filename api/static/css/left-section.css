@@ -8,6 +8,11 @@ body {
     height: 100%;
 }
 
+/* Estilos para ocultar los divs inicialmente */
+.hidden {
+    display: none;
+}
+
 .left-section, .middle-section, .right-section {
     height: 100%;
 }
