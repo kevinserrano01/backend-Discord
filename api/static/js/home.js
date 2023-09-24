@@ -2,13 +2,8 @@ window.addEventListener('load', function () {
     getServers();
 });
 
-// window.addEventListener('load', function () {
-//     getChannels();
-// });
 
-// TOMAR BOTONES PARA FUNFIONALIDADES DE UNIRSE A UN SERVIDOR O BUSCAR UNO.
-// document.getElementById("addServer").addEventListener("click", addServer);
-// document.getElementById("searchServer").addEventListener("click", searchServer);
+let idBotonGlobal = null // id del boton del servidor seleccionado -> Global
 
 function getServers() {    
     fetch("http://127.0.0.1:5000/auth/profile", {
@@ -33,6 +28,15 @@ function getServers() {
                                         <div id="servers" class="tooltip">${server}</div>    
                                     </button>`;
                     servidoresContainer.appendChild(div);
+
+                    // Obtengo una referencia al botón por su ID
+                    const boton = document.getElementById(`${server}`);
+                    boton.addEventListener('click', function() {
+                        const container_canales = document.getElementById('channels-container') // Limpiar el container de los canales
+                        container_canales.innerHTML = "";
+                        idBotonGlobal = this.id;
+                        listar_canales(idBotonGlobal);
+                    })
                 });
             });
         } else {
@@ -44,9 +48,11 @@ function getServers() {
     .catch(error => {
         document.getElementById("message").innerHTML = "An error occurred.";
     });
+}
 
+function listar_canales(server_name) {
     // OTRO FETCH ------------------------------------------------------------------------------------
-    fetch("http://127.0.0.1:5000/channel/all", {
+    fetch(`http://127.0.0.1:5000/channel/get/${server_name}`, {
         method: 'GET',
         credentials: 'include'
     })
@@ -86,7 +92,6 @@ function getServers() {
         document.getElementById("message").innerHTML = "An error occurred.";
     });
 }
-
 // function getChannels() {
 //     fetch("http://127.0.0.1:5000/channel/all", {
 //         method: 'GET',
