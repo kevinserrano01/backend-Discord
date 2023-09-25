@@ -1,25 +1,31 @@
 from flask import request, jsonify, session
 from api.database import *
-# from ..models.
+from ..models.channel_model import Channel
 
 class ChannelController:
 
     @classmethod
     def register_channel(cls):
         """Add channel to database."""
-        # server_name = request.args.get('server_name')
-        # server = Server(server_name=server_name)
+        # channel_name = request.args.get('channel_name')
+        # server_id = request.args.get('server_id')
+        # channel = Channel(channel_name=channel_name, server_id=server_id)
 
-        # data = request.json
-        # server = Server(server_name=data.get('server_name'))
-        
-        # if Server.is_registered(server):
-        #     print(f"\033[91m{server}\033[0m")
-        #     return {"message": "Este servidor ya fue creado..."}, 401
+        data = request.json
+        channel_name = data.get('channel_name')
+        server_id = data.get('server_id')
+        channel = Channel(channel_name=channel_name, server_id=server_id)
+
+        print(f"\033[92m{channel}\033[0m")
+        return Channel.create_channel(channel)
+
+        # Si el canal ya esta creado mostar un mensaje de que ya fue creado, caso contario deberia crearlo
+        # if Channel.is_registered(channel):
+        #     print(f"\033[91m{channel}\033[0m")
+        #     return {"message": "Este canal ya fue creado..."}, 401
         # else:
-        #     print(f"\033[92m{server}\033[0m")
-        #     return Server.create_server(server)
-        pass
+        #     print(f"\033[92m{channel}\033[0m")
+        #     return Channel.create_channel(channel)
 
     @classmethod
     def get_channels(self):

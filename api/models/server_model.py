@@ -58,5 +58,17 @@ class Server:
         return {"message": "Servidor Registrado con exito!"}, 201
     
 
+    @classmethod
+    def get(cls, server):
+        query = """SELECT * FROM discord_app.servers 
+                    WHERE server_name = %(server_name)s"""
+        params = server.__dict__
+        result = DatabaseConnection.fetch_one(query, params=params)
 
+        if result is not None:
+            return cls(
+                server_id = result[0],
+                server_name = result[1]
+            )
+        return None
     

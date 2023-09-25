@@ -140,6 +140,11 @@ body {
     background: #3b3e44
 }
 
+.createChannel {
+    text-decoration: none;
+    color: #96989D;
+}
+
 .channels, .channel {
     display: flex;
     flex-direction: column;

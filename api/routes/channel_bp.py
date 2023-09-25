@@ -11,6 +11,6 @@ def obtener_canales():
 def obtener_canal_asiociado_a_servidor(server_name):
     return ChannelController.get_channel_attached_server(server_name)
 
-# @channel_bp.route('/add', methods=['GET','POST'])
-# def crear_servidor():
-#     return ChannelController.register_channel()
+@channel_bp.route('/add', methods=['GET','POST'])
+def crear_canal():
+    return ChannelController.register_channel()

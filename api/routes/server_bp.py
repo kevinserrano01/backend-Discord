@@ -10,3 +10,7 @@ def obtener_servidores():
 @server_bp.route('/add', methods=['GET','POST'])
 def crear_servidor():
     return ServerController.register_server()
+
+@server_bp.route('/get/<string:server_name>', methods=['GET','POST'])
+def obtener_servidor(server_name):
+    return ServerController.get_server(server_name)

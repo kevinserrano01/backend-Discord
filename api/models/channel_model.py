@@ -2,13 +2,25 @@ from api.database import DatabaseConnection
 from flask import request, session, jsonify
 
 class Channel:
-    def __init__(self, channel_id=None, schannel_name=None, server_name=None):
+    def __init__(self, channel_id=None, channel_name=None, server_id=None):
         self.channel_id = channel_id
-        self.channel_name = schannel_name
-        self.server_name = server_name
+        self.channel_name = channel_name
+        self.server_id = server_id
 
     def __str__(self):
         return f"Channel: {self.channel_name}"
+    
+    @classmethod
+    def is_registered(cls, channel):
+        """Verifica si el canal esta registrado en la Base de datos."""
+        query = """SELECT channel_id FROM discord_app.channels
+                WHERE channel_name = %(channel_name)s"""
+        params = channel.__dict__
+        result = DatabaseConnection.fetch_one(query, params=params)
+
+        if result is not None:
+            return True
+        return False
     
 
     @classmethod

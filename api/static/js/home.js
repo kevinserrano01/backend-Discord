@@ -36,7 +36,9 @@ function getServers() {
                         container_canales.innerHTML = "";
                         idBotonGlobal = this.id;
                         listar_canales(idBotonGlobal);
-                    })
+                    });
+
+                    // get_server('Memes') SEGUIR =================================
                 });
             });
         } else {
@@ -92,59 +94,24 @@ function listar_canales(server_name) {
         document.getElementById("message").innerHTML = "An error occurred.";
     });
 }
-// function getChannels() {
-//     fetch("http://127.0.0.1:5000/channel/all", {
-//         method: 'GET',
-//         credentials: 'include'
-//     })
-//     .then(response => {
-//         if (response.status === 200) {
-//             return response.json().then(data => {
-//                 channels = data.channel_name
-//                 channels.forEach(channel => {
-//                     console.log(channel)
-//                 });
-//             });
-//         } else {
-//             return response.json().then(data => {
-//                 document.getElementById("message").innerHTML = data.message;
-//             });
-//         }
-//     })
-//     .catch(error => {
-//         document.getElementById("message").innerHTML = "An error occurred.";
-//     });
-// }
 
-
-
-
-
-
-
-// btn_server.addEventListener('click', saludar)
-
-// function saludar() {
-//     console.log('click en primer btn_server')
-// }
-
-// function mostrarDiv(divId) {
-//     // Ocultar todos los divs
-//     document.getElementById('div1').classList.add('hidden');
-//     document.getElementById('div2').classList.add('hidden');
-//     document.getElementById('div3').classList.add('hidden');
-
-//     // Mostrar el div deseado
-//     document.getElementById(divId).classList.remove('hidden');
-// }
-
-// // Asignar eventos de clic a los botones
-// document.getElementById('Ingles').addEventListener('click', function () {
-//     saludar();
-// });
-// document.getElementById('Programacion Web').addEventListener('click', function () {
-//     mostrarDiv('div2');
-// });
-// document.getElementById('Algoritmica').addEventListener('click', function () {
-//     mostrarDiv('div3');
-// });
+function get_server(server_name) {
+    fetch(`http://127.0.0.1:5000/server/get/${server_name}`, {
+        method: 'GET',
+        credentials: 'include'
+    })
+    .then(response => {
+        if (response.status === 200) {
+            return response.json().then(data => {
+                console.log(data);
+            });
+        } else {
+            return response.json().then(data => {
+                document.getElementById("message").innerHTML = data.message;
+            });
+        }
+    })
+    .catch(error => {
+        document.getElementById("message").innerHTML = "An error occurred.";
+    });
+}

@@ -36,23 +36,14 @@ class ServerController:
                 })
         return jsonify(servidores), 200
     
-    # @classmethod
-    # def get_server(cls, username):
-    #     """Retrieves a user from the database, by means of an id"""
-    #     user = User.get(User(username = username))
-    #     if user is not None:
-    #         return {
-    #             "user_id": user.user_id,
-    #             "username": user.username,
-    #             "email": user.email,
-    #             "first_name": user.first_name,
-    #             "last_name": user.last_name,
-    #             "date_of_birth": user.date_of_birth,
-    #             "phone_number": user.phone_number,
-    #             "creation_date": user.creation_date,
-    #             "last_login": user.last_login,
-    #             "status_id": user.status_id,
-    #             "role_id": user.role_id
-    #         }, 200
-    #     else:
-    #         return {"message": "Usuario no encontrado"}, 404
+    @classmethod
+    def get_server(cls, server_name):
+        """Devuelve un servidor en especidifo pasandole le nombre del servidor."""
+        server = Server.get(Server(server_name = server_name))
+        if server is not None:
+            return {
+                "server_id": server.server_id,
+                "server_name": server.server_name
+            }, 200
+        else:
+            return {"message": "Servidor no encontrado"}, 404
