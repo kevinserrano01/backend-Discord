@@ -21,6 +21,8 @@ function login() {
         if (response.status === 200) {
             // Redirect to profile page if login is successful
             return response.json().then(data => {
+                var usernameLogin = document.getElementById("username").value
+                sessionStorage.setItem('user', usernameLogin);
                 window.location.href = "profile.html";
             });
         } else {

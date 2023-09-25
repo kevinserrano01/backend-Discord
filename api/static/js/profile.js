@@ -40,6 +40,11 @@ function logout() {
     .then(response => {
         if (response.status === 200) {
             return response.json().then(data => {
+                // Eliminar variables de la sessionStorage
+                sessionStorage.removeItem('user');
+                sessionStorage.removeItem('channel_name');
+                sessionStorage.removeItem('server_name');
+                
                 window.location.href = "login.html";
             });
         } else {
