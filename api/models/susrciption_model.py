@@ -20,3 +20,11 @@ class Suscription:
         DatabaseConnection.execute_query(sql, params=params)
         return {"message": "Usuario suscrito al servidor con exito!"}, 201
     
+    @classmethod
+    def delete_suscription(cls, suscription):
+        """Delete suscription from the database."""
+        sql = """DELETE FROM discord_app.suscription WHERE suscription_user_id = %(user_id)s AND suscription_server_id = %(server_id)s;"""
+        params = suscription.__dict__
+        DatabaseConnection.execute_query(sql, params=params)
+        return {"message": "Suscripcion eliminada con exito!"}, 201
+    

@@ -10,3 +10,7 @@ def listar_suscripciones():
 @suscriptcion_bp.route('/add', methods=['GET', 'POST'])
 def crear_suscripcion():
     return SuscriptionController.suscription()
+
+@suscriptcion_bp.route('/exit', methods=['GET', 'POST'])
+def eliminar_suscripcion():
+    return SuscriptionController.exit_suscription()

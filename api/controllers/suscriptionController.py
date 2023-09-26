@@ -41,3 +41,13 @@ class SuscriptionController:
                     'server_name': suscription[1]
                 })
         return jsonify(suscriptions), 200
+    
+    @classmethod
+    def exit_suscription(self):
+        data = request.json
+        server_id = data.get('server_id')
+        user_id = data.get('user_id')
+        suscription = Suscription(user_id=user_id, server_id=server_id)
+
+        print(f"Delete suscription -> \033[91m{suscription}\033[0m")
+        return Suscription.delete_suscription(suscription)
