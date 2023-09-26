@@ -8,5 +8,9 @@ def obtener_mensajes():
     return MessageController.get_messages()
 
 @message_bp.route('/get/<string:channel_name>', methods=['GET'])
-def obtener_canal_asiociado_a_servidor(channel_name):
+def obtener_mensaje_asiociado_a_canal(channel_name):
     return MessageController.get_messages_attached_channel(channel_name)
+
+@message_bp.route('/add', methods=['GET', 'POST'])
+def crear_mensaje():
+    return MessageController.add_message()

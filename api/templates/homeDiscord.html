@@ -60,48 +60,11 @@
                             </a>
                         </div>
                     </div>
+
                     <div id="channels-container" class="channel">
-                        <!-- <div id="div1">
-                            <div class="contents">
-                                <div>
-                                    <img src="../static/icons/hashtag.png" style="width: 20px">
-                                    <p style="color: rgb(231, 231, 231); font-weight: bold; font-size: 14px; margin-left: 5px;">chat</p>
-                                </div>
-                                <div style="margin-right: 7px;">
-                                    <div class="holder">
-                                        <img src="../static/icons/add-friend.png">
-                                        <div class="tooltip2" style="left: -280%; top: -35px">Create Invite</div>
-                                    </div>
-                                    <div class="holder">
-                                        <img src="../static/icons/edit-channel.png" style="margin-left: 5px;">
-                                        <div class="tooltip2" style="left: -210%; top: -35px">Edit Channel</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
-                        <!-- <div id="div1">
-                            <div class="contents2">
-                                <div>
-                                    <img src="../static/icons/hashtag.png" style="width: 20px">
-                                    <p class="channel-p">PRuebaaa23</p>
-                                </div>
-                                <div style="margin-right: 7px;">
-                                    <div class="holder">
-                                        <img src="../static/icons/add-friend.png" class="show-img">
-                                        <div class="tooltip2" style="left: -280%; top: -35px">Create Invite</div>
-                                    </div>
-                                    <div class="holder">
-                                        <img src="../static/icons/edit-channel.png" style="margin-left: 5px;" class="show-img">
-                                        <div class="tooltip2" style="left: -210%; top: -35px">Edit Channel</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        
-                        <!-- FIN CANALES ------------------------------------------------------------------------------------------------- -->
-
+                        <!-- CANALES DEL SERVIDOR ------------------------------------------------------------------------------------------------- -->
                     </div>
+
                     <div class="channel">
                         <div class="name">
                             <p class="p1">VOICE CHANNELS</p>
@@ -128,6 +91,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!--Footer-->
                 <div class="ffooter">
                     <div class="profooter">
@@ -157,6 +121,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- SECCION CHAT ----------------------------------------------------------------------- -->
         <div class="right-section">
             <div class="rupper">
                 <div>
@@ -198,7 +164,7 @@
                 </div>
                 <div style="position: relative">
                     <div class="line"></div>
-                    <div class="date">17 Septiembre 2023</div>
+                    <div class="date">27 Septiembre 2023</div>
                 </div>
 
                 <div id="messages-container">
@@ -211,7 +177,10 @@
                     <img src="../static/right-images/plus.png">
                 </div>
                 <div class="minput">
-                    <input placeholder="Message #chat" type="text">
+                    <form id="send-message-form">
+                        <input id="messageContent" placeholder="Message #chat" type="text">
+                        <button type="submit">Send</button>
+                    </form>
                 </div>
             </div>
         </div>

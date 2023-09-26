@@ -49,6 +49,7 @@ function logout() {
                 sessionStorage.removeItem('server_name');
                 sessionStorage.removeItem('user_id');
                 sessionStorage.removeItem('id_server');
+                sessionStorage.removeItem('channel_id');
                 
                 window.location.href = "login.html";
             });

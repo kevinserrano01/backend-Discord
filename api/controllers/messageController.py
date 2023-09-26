@@ -52,3 +52,15 @@ class MessageController:
                     'username': canal[4]
                 })
         return jsonify(mensajes), 200
+    
+
+    @classmethod
+    def add_message(self):
+        data = request.json
+        content = data.get('content')
+        channel_id = data.get('channel_id')
+        user_id = data.get('user_id')
+        mensaje = Message(content=content, channel_id=channel_id, user_id=user_id)
+
+        print(f"\033[92m{mensaje}\033[0m")
+        return Message.send_message(mensaje)
