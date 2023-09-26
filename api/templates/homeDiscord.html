@@ -47,9 +47,19 @@
             <div class="left2">
                 <div class="lupper">
                     <p style="font-size: 15px; font-weight: bold;">Server</p>
-                    <!--<p style="color: rgb(190, 190, 190); font-size: 20px;">&plus;</p>-->
-                    <img src="../static/icons/arrow-down.png">
+                    <div class="ricons">
+                        <div class="holder">
+                            <a id="btn-Exit-Server" class="createChannel">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-box-arrow-left icono-salir-server" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                                </svg>
+                                <div class="tooltip2">Exit Server</div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="channels">
                     <div class="name">
                         <p class="p1">TEXT CHANNELS</p>
@@ -164,7 +174,7 @@
                 </div>
                 <div style="position: relative">
                     <div class="line"></div>
-                    <div class="date">27 Septiembre 2023</div>
+                    <div class="date">25 Septiembre 2023</div>
                 </div>
 
                 <div id="messages-container">
@@ -172,17 +182,24 @@
                 </div>
 
             </div>
-            <div class="dinput">
+            <!-- INPUT MENSAJE -------------------------------------------------------------------- -->
+            <!-- <div class="dinput">
                 <div class="plus-icon">
                     <img src="../static/right-images/plus.png">
                 </div>
                 <div class="minput">
-                    <form id="send-message-form">
-                        <input id="messageContent" placeholder="Message #chat" type="text">
-                        <button type="submit">Send</button>
-                    </form>
+                    <input id="messageContent" placeholder="write your message..." type="text">
+                    <button id="btnEnviar" type="submit">Send</button>
+                </div>
+            </div> -->
+
+            <div class="dinput">
+                <div class="input-group">
+                    <input id="messageContent" type="text" class="input" name="messageContent" placeholder="write your message..." autocomplete="off" required>
+                    <input id="btnEnviar" class="button--submit" value="Send" type="submit">
                 </div>
             </div>
+
         </div>
     </body>
 

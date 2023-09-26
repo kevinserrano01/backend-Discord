@@ -169,10 +169,12 @@ function get_messages(channel_name) {
     });
 }
 
-document.getElementById("send-message-form").addEventListener("submit", function (event) {
-    event.preventDefault();
-    sendMessage();
-});
+
+const cajaMensajes = document.getElementById('messages-container')
+const btnEnviar = document.getElementById('btnEnviar')
+const inputMensaje = document.getElementById('messageContent')
+
+btnEnviar.addEventListener('click', sendMessage);
 
 function sendMessage() {
     const data = {
@@ -180,9 +182,81 @@ function sendMessage() {
         user_id: sessionStorage.getItem('user_id'),
         channel_id: sessionStorage.getItem('channel_id')
     };
+    // console.log(data)
+
+    let message = inputMensaje.value.trim()
+    let username = sessionStorage.getItem('user')
+    let fechaYHora = new Date();
+    if (message !== ''){
+        let nuevoMensaje = document.createElement('div');
+        nuevoMensaje.classList.add('message');
+        nuevoMensaje.innerHTML = `<img src="../static/images/Discord_Logo.jpg" width="46px">
+                                    <div style="margin-left: 10px;">
+                                        <div style="display: flex; align-items: center;">
+                                            <p style="color: white; margin-right: 5px; font-size: 14px; font-weight: bold;">${username}</p>
+                                            <div class="date" style="position: static; font-size: 11px;">${fechaYHora.toTimeString().split(' ')[0]}</div>
+                                        </div>
+                                        <p style="margin-top: 5px; color: #D6D7CA; font-size: 14px">${message}</p>
+                                    </div>`;
+        cajaMensajes.appendChild(nuevoMensaje);
+        inputMensaje.value = '';
+        inputMensaje.focus();
+
+        fetch("http://127.0.0.1:5000/message/add", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        credentials: 'include'
+        })
+        .then(response => {
+            if (response.status === 201) {
+                // Redirect to profile page if login is successful
+                return response.json().then(data => {
+                    // console.log(data)
+                    // window.location.href = "homeDiscord.html";
+                });
+            } else {
+                return response.json().then(data => {
+                    document.getElementById("message").innerHTML = `<div class="notifications-container">
+                    <div class="error-alert">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                        <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="error-svg">
+                            <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" fill-rule="evenodd"></path>
+                        </svg>
+                        </div>
+                        <div class="error-prompt-container">
+                        <p class="error-prompt-heading">${data.message}</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>`;
+                });
+            }
+        })
+        .catch(error => {
+            document.getElementById("message").innerHTML = "An error occurred.";
+        });
+
+    } else {
+        console.log('Llena el mensaje con contenido porfavor...')
+    }
+}
+
+const btnExitServer = document.getElementById('btn-Exit-Server');
+btnExitServer.addEventListener('click', exitServer);
+
+function exitServer() {
+    const data = {
+        user_id: sessionStorage.getItem('user_id'),
+        server_id: sessionStorage.getItem('id_server')
+    }
+    console.log('Saliendo del servidor...')
     console.log(data)
 
-    fetch("http://127.0.0.1:5000/message/add", {
+    fetch("http://127.0.0.1:5000/suscription/exit", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -194,8 +268,7 @@ function sendMessage() {
         if (response.status === 201) {
             // Redirect to profile page if login is successful
             return response.json().then(data => {
-                console.log(data)
-                // window.location.href = "homeDiscord.html";
+                window.location.href = "homeDiscord.html";
             });
         } else {
             return response.json().then(data => {

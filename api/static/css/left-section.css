@@ -246,3 +246,7 @@ body {
     display: flex;
     align-items: center;
 }
+
+.icono-salir-server {
+    fill: red;
+}
