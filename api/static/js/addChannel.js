@@ -6,7 +6,7 @@ document.getElementById("addChannelForm").addEventListener("submit", function (e
 function addChannel() {
     const data = {
         channel_name: document.getElementById("channel_name").value,
-        server_id: document.getElementById("server_id").value
+        server_id: sessionStorage.getItem('id_server')
     };
     console.log(data)
 
