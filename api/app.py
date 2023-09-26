@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 # API: permitir el acceso desde dominios específicos. Permite solicitudes desde el dominio de tu página web.
 CORS(app, supports_credentials=True, origins="http://127.0.0.1:5500")
+# CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:5500"}})
 
 # Registrar Rutas despues de CORS
 app.register_blueprint(user_bp, url_prefix = '/auth')

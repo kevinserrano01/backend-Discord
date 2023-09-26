@@ -18,6 +18,9 @@ function getProfile() {
                 document.getElementById("email").innerText = data.email;
                 document.getElementById("first_name").innerText = data.first_name;
                 document.getElementById("last_name").innerText = data.last_name;
+
+                let user_id = data.user_id
+                sessionStorage.setItem('user_id', user_id) // Guardar el Id del usuario en sessionStorage para usarlo luego...
             });
         } else {
             return response.json().then(data => {
@@ -44,6 +47,8 @@ function logout() {
                 sessionStorage.removeItem('user');
                 sessionStorage.removeItem('channel_name');
                 sessionStorage.removeItem('server_name');
+                sessionStorage.removeItem('user_id');
+                sessionStorage.removeItem('id_server');
                 
                 window.location.href = "login.html";
             });

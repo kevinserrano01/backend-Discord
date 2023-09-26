@@ -5,9 +5,22 @@ from ..models.susrciption_model import Suscription
 class SuscriptionController:
 
     @classmethod
-    def get_suscription(self):
+    def suscription(self):
+        data = request.json
+        server_id = data.get('server_id')
+        user_id = data.get('user_id')
+        suscription = Suscription(user_id=user_id, server_id=server_id)
 
-        pass
+        print(f"\033[92m{suscription}\033[0m")
+        return Suscription.create_suscription(suscription)
+
+        # Si el usuario ya esta suscrito al servidor, mostar un mensaje de que ya fue suscrito, caso contario deberia unirse
+        # if Suscription.is_registered(suscription):
+        #     print(f"\033[91m{suscription}\033[0m")
+        #     return {"message": "Usted ya esta suscrito en este servidor..."}, 401
+        # else:
+        #     print(f"\033[92m{suscription}\033[0m")
+        #     return Suscription.create_suscription(suscription)
 
     @classmethod
     def get_suscriptions(self):

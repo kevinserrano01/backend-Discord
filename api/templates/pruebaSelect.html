@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de obtener el valor de una opción</title>
+</head>
+<body>
+    <select id="miSelect">
+        <option value="opcion1">Texto de la Opción 1</option>
+        <option value="opcion2">Texto de la Opción 2</option>
+        <option value="opcion3">Texto de la Opción 3</option>
+        <option value="5">Texto de la Opción 5</option>
+    </select>
+
+    <button onclick="obtenerValorOpcion()">Obtener Valor de la Opción</button>
+
+    <script>
+        function obtenerValorOpcion() {
+            // Obtén una referencia al elemento select
+            var select = document.getElementById("miSelect");
+
+            // Obtiene la opción seleccionada
+            var opcionSeleccionada = select.options[select.selectedIndex];
+
+            // Accede al valor del atributo "value" de la opción seleccionada
+            var valor = opcionSeleccionada.value;
+
+            // Muestra el valor en la consola o haz lo que necesites con él
+            console.log("Valor seleccionado: " + valor);
+        }
+    </script>
+</body>
+</html>

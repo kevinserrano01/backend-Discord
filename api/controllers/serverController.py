@@ -47,3 +47,15 @@ class ServerController:
             }, 200
         else:
             return {"message": "Servidor no encontrado"}, 404
+        
+    @classmethod
+    def join_server(cls, server_name):
+        """Devuelve un servidor en especidifo pasandole le nombre del servidor."""
+        server = Server.get(Server(server_name = server_name))
+        if server is not None:
+            return {
+                "server_id": server.server_id,
+                "server_name": server.server_name
+            }, 200
+        else:
+            return {"message": "Servidor no encontrado"}, 404

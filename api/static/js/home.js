@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function () {
     getServers();
 });
 
-var server_name = sessionStorage.getItem('server_name')
+// var server_name = sessionStorage.getItem('server_name')
 let idBotonGlobal = null // id del boton del servidor seleccionado -> Global
 
 function getServers() {    
@@ -91,6 +91,10 @@ function listar_canales(server_name) {
                         sessionStorage.setItem('channel_name', item.channel_name)
                         let nombre_canal = sessionStorage.getItem('channel_name')
                         get_messages(nombre_canal);
+                        // Verificar si hay mensajes, en caso que no hayan mensajes mostrar un mensaje.
+                        // if (messages_container.innerHTML.trim() === "") {
+                        //     messages_container.innerHTML = "No hay mensajes.";
+                        // }
                     });
                 });
             });

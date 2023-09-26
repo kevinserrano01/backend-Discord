@@ -185,3 +185,8 @@ body{
     margin: 2px;
     border-radius: 40px;
 }
+
+option {
+  font-size: 40px;
+  margin-bottom: 20px;
+}

@@ -45,7 +45,7 @@ class MessageController:
         if resultado is not None:
             for canal in resultado:
                 mensajes.append({
-                    'messages_id': canal[0],
+                    'message_id': canal[0],
                     'creation_date': canal[1],
                     'content': canal[2],
                     'channel_name': canal[3],
