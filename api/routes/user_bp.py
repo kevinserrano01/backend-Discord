@@ -30,10 +30,10 @@ def registrar_usuario():
     """Endpoint para registrar un usuario en la base de datos"""
     return UserController.register()
 
-@user_bp.route('/actualizar_usuario/<int:user_id>')
-def actualizar_usuario(user_id):
-    """Endpoint para actualizar un usuario  travez de su ID"""
-    return UserController.update_user(user_id)
+@user_bp.route('/edit', methods=['GET', 'POST'])
+def actualizar_usuario():
+    """Endpoint para actualizar un usuario con su id"""
+    return UserController.edit_user()
 
 @user_bp.route('/deleteUser/<int:user_id>')
 def eliminar_usuario(user_id):

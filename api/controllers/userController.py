@@ -11,11 +11,7 @@ class UserController:
         user = User(
             username = data.get('username'),
             password = data.get('password')
-        )
-        # username = request.args.get('username')
-        # password = request.args.get('password')
-        # user = User(username=username, password=password)
-        
+        ) 
         if User.is_registered(user):
             print(f"\033[92m{user}\033[0m")
             # Esto significa que la aplicación web recordará el nombre de usuario del usuario mientras la sesión esté activa.
@@ -28,16 +24,6 @@ class UserController:
     @classmethod
     def register(cls):
         """Registrar usuario en la base de datos."""
-        # username = request.args.get('username')
-        # password = request.args.get('password')
-        # email = request.args.get('email')
-        # first_name = request.args.get('first_name')
-        # last_name = request.args.get('last_name')
-        # date_of_birth = request.args.get('fecha_nac')
-        # phone_number = request.args.get('phone')
-        # status_id = request.args.get('status_id')
-        # role_id = request.args.get('role_id')
-
         data = request.json
         user = User(
             username=data.get('username'),
@@ -134,54 +120,24 @@ class UserController:
                 })
         return jsonify(lista_usuarios), 200
 
-    # @classmethod
-    # def create_user(self):
-    #     """Create a user from the database"""
-    #     nombre = request.args.get('nombre')
-    #     apellido = request.args.get('apellido')
-    #     clave = request.args.get('clave')
-    #     email = request.args.get('email')
-    #     fecha_nacimiento = request.args.get('fecha_nacimiento')
-
-    #     sql = """INSERT INTO usuarios (nombre, apellido, clave, email, fecha_nacimiento)
-    #             VALUES (%s, %s, %s, %s, %s);
-    #         """
-
-    #     params = nombre, apellido, clave, email, fecha_nacimiento,
-    #     DatabaseConnection.execute_query(sql, params)
-
-    #     datos = {
-    #         "nombre": nombre,
-    #         "apellido": apellido,
-    #         "clave": clave,
-    #         "email": email,
-    #         "fecha_nacimiento": fecha_nacimiento
-    #     }
-
-    #     return datos, 201
-
     @classmethod
-    def update_user(self, id_usuario):
-        """Update a user from the database"""
-        nombre = request.args.get('nombre')
-        apellido = request.args.get('apellido')
-        clave = request.args.get('clave')
-        email = request.args.get('email')
-        fecha_nacimiento = request.args.get('fecha_nacimiento')
-        
-        sql = "UPDATE customers SET nombre = %s, apellido = %s,clave = %s,email = %s, fecha_nacimiento = %s WHERE customer_id = %s"
-        params = nombre, apellido, clave, email, fecha_nacimiento, id_usuario
-        DatabaseConnection.execute_query(sql, params)
-
-        datos = {
-            "nombre": nombre,
-	        "apellido": apellido,
-            "clave": clave,
-            "email": email,
-            "fecha_nacimiento": fecha_nacimiento,
-            }, 200
-        
-        return datos
+    def edit_user(cls):
+        """Actualizar un usuario en la base de datos."""
+        data = request.json
+        user = User(
+            user_id = data.get('user_id'),
+            username=data.get('username'),
+            email=data.get('email'),
+            first_name=data.get('first_name'),
+            last_name=data.get('last_name')
+        )
+        if User.is_registered(user):
+            print(f"\033[91m{user}\033[0m")
+            return {"message": "El nombre de usuario ya esta en uso."}, 401
+        else:
+            print(f"\033[92m{user}\033[0m")
+            session['username'] = data.get('username') # Asignar el nuevo usuario a la Session
+            return User.update_user(user)
 
     @classmethod
     def delete_user(self, user_id):

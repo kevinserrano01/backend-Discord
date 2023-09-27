@@ -2,19 +2,6 @@ from api.database import DatabaseConnection
 from flask import request
 
 class User:
-    # def __init__(self, user_id = None, username = None, password = None, email = None, first_name = None, last_name = None, date_of_birth = None, phone_number = None, creation_date = None, last_login = None, status_id = None, role_id = None):
-    #     self.user_id = user_id
-    #     self.username = username
-    #     self.password = password
-    #     self.email = email
-    #     self.first_name = first_name
-    #     self.last_name = last_name
-    #     self.date_of_birth = date_of_birth
-    #     self.phone_number = phone_number
-    #     self.creation_date = creation_date
-    #     self.last_login = last_login
-    #     self.status_id = status_id
-    #     self.role_id = role_id
 
     def __init__(self, **kwargs):
         self.user_id = kwargs.get('user_id')
@@ -32,23 +19,6 @@ class User:
 
     def __str__(self) -> str:
         return f"Username: {self.username} - Password: {self.password}"
-    
-    # def serialize(self):
-    #     return {
-    #         "user_id": self.user_id,
-    #         "username": self.username,
-    #         "password": self.password,
-    #         "email": self.email,
-    #         "first_name": self.first_name,
-    #         "last_name": self.last_name,
-    #         "date_of_birth": self.date_of_birth,
-    #         "phone_number": self.phone_number,
-    #         "creation_date": self.creation_date,
-    #         "last_login": self.last_login,
-    #         "status": UserStatusModel.get(UserStatusModel(status_id = self.status_id)).serialize(),
-    #         "role": UserRoleModel.get(UserRoleModel(role_id = self.role_id)).serialize()
-    #     }
-
 
     @classmethod
     def is_registered(cls, user):
@@ -116,3 +86,29 @@ class User:
                 list_servers.append(suscription[1])
             return list_servers
         return None
+
+    @classmethod
+    def update_user(cls, user):
+        """Update a user from the database"""
+        sql = """UPDATE discord_app.users SET username=%(username)s, email=%(email)s, first_name=%(first_name)s, last_name=%(last_name)s WHERE user_id = %(user_id)s;"""
+        params = user.__dict__
+        DatabaseConnection.execute_query(sql, params=params)
+        return {"message": "Usuario Actualizado con exito"}, 200
+    
+
+
+    # def serialize(self):
+    #     return {
+    #         "user_id": self.user_id,
+    #         "username": self.username,
+    #         "password": self.password,
+    #         "email": self.email,
+    #         "first_name": self.first_name,
+    #         "last_name": self.last_name,
+    #         "date_of_birth": self.date_of_birth,
+    #         "phone_number": self.phone_number,
+    #         "creation_date": self.creation_date,
+    #         "last_login": self.last_login,
+    #         "status": UserStatusModel.get(UserStatusModel(status_id = self.status_id)).serialize(),
+    #         "role": UserRoleModel.get(UserRoleModel(role_id = self.role_id)).serialize()
+    #     }
