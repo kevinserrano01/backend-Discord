@@ -56,6 +56,10 @@ document.getElementById("editUSerForm").addEventListener("submit", function (eve
 });
 
 function updateUser() {
+    // Actualizamos el username de la sessionStorage
+    let newUsername = document.getElementById("username").value;
+    sessionStorage.setItem('user', newUsername)
+
     const data = {
         user_id: sessionStorage.getItem('user_id'),
         username: document.getElementById("username").value,
