@@ -64,3 +64,18 @@ class MessageController:
 
         print(f"\033[92m{mensaje}\033[0m")
         return Message.send_message(mensaje)
+    
+    @classmethod
+    def remove_message(cls):
+        data = request.json
+        message_id = data.get('message_id')
+        user_id = data.get('user_id')
+
+        mensaje = Message(message_id=message_id, user_id=user_id)
+
+        if Message.verify_id(mensaje):
+            print(f"\033[92m Message deleted -> {mensaje} \033[0m")
+            return Message.delete_message(mensaje)
+        else:
+            print(f"\033[91m Error: El mensaje no fue creado por el usuario logeado. \033[0m")
+            return {"message": "El mensaje no fue creado por el usuario logeado."}, 401

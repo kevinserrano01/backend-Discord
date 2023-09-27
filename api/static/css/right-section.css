@@ -79,6 +79,12 @@
     padding: 0px 3px;
 }
 
+#messages-container {
+    max-height: 420px; /* Ajusta la altura máxima */
+    overflow-y: scroll;
+    scrollbar-color: #0cff9e #f60909;
+}
+
 .message {
     display: flex;
     align-items: center;

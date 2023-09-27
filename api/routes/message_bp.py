@@ -14,3 +14,7 @@ def obtener_mensaje_asiociado_a_canal(channel_name):
 @message_bp.route('/add', methods=['GET', 'POST'])
 def crear_mensaje():
     return MessageController.add_message()
+
+@message_bp.route('/delete', methods=['GET', 'POST'])
+def borrar_mensaje():
+    return MessageController.remove_message()
