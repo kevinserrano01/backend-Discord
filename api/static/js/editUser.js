@@ -17,26 +17,10 @@ function cargarDatosUsuario() {
                 console.log(data.first_name)
                 console.log(data.last_name)
 
-                // username = document.getElementById('fieldPrueba')
-                // username.innerHTML = `<div class="field">
-                //                         <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                //                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                //                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                //                         </svg>
-                //                         <input class="input-field" type="text" id="username" name="username" placeholder="${data.username}" autocomplete="off" required>
-                //                     </div>`;
-
-                // const servidoresContainer = document.getElementById('servidores-container');
-                // servidores = data.servers
-                // servidores.forEach(server => {
-                //     const div = document.createElement('div');
-                //     div.innerHTML = `<button id="${server}" class="pf2" style="border-radius: 15px; background: #5865f2">
-                //                         <p style="color: #fff; font-weight: bold; font-size: 15px">${server[0]}</p>
-                //                         <div class="left-line" style="opacity: 1; height:40px; top: -2px"></div>
-                //                         <div id="servers" class="tooltip">${server}</div>    
-                //                     </button>`;
-                //     servidoresContainer.appendChild(div);
-                // });
+                document.getElementById("username").value = data.username;
+                document.getElementById("email").value = data.email;
+                document.getElementById("first_name").value = data.first_name;
+                document.getElementById("last_name").value = data.last_name;
             });
         } else {
             return response.json().then(data => {
