@@ -77,5 +77,5 @@ class MessageController:
             print(f"\033[92m Message deleted -> {mensaje} \033[0m")
             return Message.delete_message(mensaje)
         else:
-            print(f"\033[91m Error: El mensaje no fue creado por el usuario logeado. \033[0m")
-            return {"message": "El mensaje no fue creado por el usuario logeado."}, 401
+            print(f"\033[91m Error: No puedes eliminar este mensaje porque no eres el autor. \033[0m")
+            return {"message": "No puedes eliminar este mensaje porque no eres el autor."}, 401

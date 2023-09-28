@@ -22,7 +22,7 @@ class Server:
         return False
     
 
-    def guardar_en_tabla_intermedia():
+    def guardar_en_tabla_intermedia(self):
         user_name = session.get('username')
         query = "SELECT user_id FROM discord_app.users WHERE username = %s"
         parametro = (user_name,)
@@ -71,4 +71,3 @@ class Server:
                 server_name = result[1]
             )
         return None
-    
