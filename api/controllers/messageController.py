@@ -79,3 +79,19 @@ class MessageController:
         else:
             print(f"\033[91m Error: No puedes eliminar este mensaje porque no eres el autor. \033[0m")
             return {"message": "No puedes eliminar este mensaje porque no eres el autor."}, 401
+
+    @classmethod
+    def edit_message(cls):
+        data = request.json
+        message_id = data.get('message_id')
+        user_id = data.get('user_id')
+        content = data.get('content')
+
+        mensaje = Message(message_id=message_id, user_id=user_id, content=content)
+
+        if Message.verify_id(mensaje):
+            print(f"\033[92m Message update -> {mensaje} \033[0m")
+            return Message.update_message(mensaje)
+        else:
+            print(f"\033[91m Error: No puedes editar este mensaje porque no eres el autor. \033[0m")
+            return {"message": "No puedes editar este mensaje porque no eres el autor."}, 401

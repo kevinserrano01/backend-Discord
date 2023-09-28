@@ -18,3 +18,7 @@ def crear_mensaje():
 @message_bp.route('/delete', methods=['GET', 'POST'])
 def borrar_mensaje():
     return MessageController.remove_message()
+
+@message_bp.route('/edit', methods=['GET', 'POST'])
+def editar_mensaje():
+    return MessageController.edit_message()

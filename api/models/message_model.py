@@ -45,3 +45,11 @@ class Message:
         params = message.__dict__
         DatabaseConnection.execute_query(sql, params=params)
         return {"message": "Mensaje Eliminado con exito"}, 200
+
+    @classmethod
+    def update_message(cls, message):
+        """Update a message from the database"""
+        sql = """UPDATE discord_app.messages SET content = %(content)s WHERE messages_id = %(message_id)s and users_user_id = %(user_id)s;"""
+        params = message.__dict__
+        DatabaseConnection.execute_query(sql, params=params)
+        return {"message": "Mensaje Editado con exito"}, 200
