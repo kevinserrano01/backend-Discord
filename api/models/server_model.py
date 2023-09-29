@@ -22,7 +22,8 @@ class Server:
         return False
     
 
-    def guardar_en_tabla_intermedia(self):
+    @classmethod
+    def guardar_en_tabla_intermedia(cls):
         user_name = session.get('username')
         query = "SELECT user_id FROM discord_app.users WHERE username = %s"
         parametro = (user_name,)
