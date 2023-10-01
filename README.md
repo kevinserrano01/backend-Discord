@@ -4,16 +4,25 @@
 En este proyecto se desarrolló una Aplicación Web con un sistema de mensajería similar a Discord.
 La aplicación permite registrar usuarios, los cuales pueden crear o unirse a uno o más servidores. Un servidor es un espacio que puede contener usuarios y a su vez canales.
 
+## Sobre el Equipo 💪
+### Hola👋, Bienvenidos al Grupo 10. Somos **For()Innovators**! 
+👩‍💻 Somos alumnos de primer año de la *Tecnicatura Universitaria en Desarrollo de Software* de la Universidad Provincial de Administración, Tecnología y Oficios UPATecO.
 
-## Tecnológicas utilizadas
-**HTML**, **CSS** , **Javascript**, **Flask**, **MySQL**, **Python**.
+🧠 Actualmente estamos en nuestra etapa de formación académica. Somos alumnos comprometidos y entusiastas a la hora de desarrollar nuestros proyectos.
+
+## 📌 Tecnologias usadas
+
+**Frontend:** HTML, CSS, JavaScript
+
+**Backend:** Python, Flask
+
+**Database:** MySQL
 
 
 Para el desarrollo de la aplicación web fue necesario:
-● Una interfaz con la que los usuarios de la aplicación interactúen, implementada con HTML, CSS y Javascript.
-● Una REST API que pueda consumir la interfaz mediante fetching.
-La cual fue implementada usando Flask, haciendo uso del patrón de diseño MVC.
-● Una base de datos en MySQL, para manejar toda la información de la app.
+- Una interfaz con la que los usuarios de la aplicación interactúen, implementada con HTML, CSS y Javascript.
+- Una REST API que pueda consumir la interfaz mediante fetching. La cual fue implementada usando Flask, haciendo uso del patrón de diseño MVC.
+- Una base de datos en MySQL, para manejar toda la información de la app.
 
 ## Funcionalidades
 La aplicación permite las siguientes funcionalidades:
@@ -29,40 +38,58 @@ La aplicación permite las siguientes funcionalidades:
 
 6. La aplicación deberá implementar manejadores de errores personalizados para los siguientes casos:
 
-a) 400, Bad Request. b) 404, Not Found.
-c) 403, Forbidden. Para aquellas peticiones donde no se tenga permisos de acceso o modificación. Por ejemplo, al intentar eliminar un mensaje del chat de otro usuario. d) 500, Server Error.
+a) 400, Bad Request.
+b) 404, Not Found.
+c) 403, Forbidden. Para aquellas peticiones donde no se tenga permisos de acceso o modificación. Por ejemplo, al intentar eliminar un mensaje del chat de otro usuario.
+d) 500, Server Error.
 
 7. **Buscador de servidores**: Se buscará por el nombre del servidor. En este componente se mostrarán todos los servidores que coincidan con la búsqueda realizada, para cada resultado se debe mostrar el nombre del servidor, la descripción del servidor (si la tuviera) y la cantidad de usuarios registrados en él (siempre tiene al menos un usuario registrado, quien lo creó).
 8. Se deberá administrar la sesión de un usuario, es decir, registramos la información de un usuario inicie una sesión, y el acceso a los *endpoints* de la API REST diseñada deberá estar restringida sólo a usuarios logueados.
 
 9. Notificaciones e invitaciones a un servidor.
 
+## 🖥️ Base de datos (DER)
+
+![Data base](https://i.pinimg.com/750x/eb/fe/69/ebfe6944ff690e1f47fdb5ec5828531f.jpg)
 
 
+## 🔌 Instalar Aplicacion
 
+Clonar el repositorio.
 
+```bash
+  git clone https://github.com/kevinserrano01/backend-Discord.git
+```
 
+Acceder a la carpeta principal que se crea luego de clonar el repositorio.
 
-## ¿Cómo ejecutar el proyecto?
-Es importante activar el entorno virtual.
-## Sobre el Equipo 💪
-### Hola👋, Bienvenidos al Grupo 10. Somos **For()Innovators**! 
-👩‍💻 Somos alumnos de primer año de la *Tecnicatura Universitaria en Desarrollo de Software* de la Universidad Provincial de Administración, Tecnología y Oficios UPATecO.
+```bash
+  cd backend-Discord
+```
+Activar el entorno virtual
 
-🧠 Actualmente estamos en nuestra etapa de formación académica. Somos alumnos comprometidos y entusiastas a la hora de desarrollar nuestros proyectos.
+```bash
+  cd env/Script/activate
+```
+Posicionarse en la carpeta principal e instalar las dependencias.
 
+```bash
+  pip install -r requirements.txt
+```
+Correr la aplicacion.
 
-😄 Gracias por visitarnos!
-
+```bash
+  pip main.py
+```
 
 
 ## 🔗 Contactos
 
 ### LinkedIn
-Kevin Serrano [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kevin-serrano-86711a231/)
-Benjamin Assennato
+- Kevin Serrano [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kevin-serrano-86711a231/)
+- Benjamin Assennato
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/benjamin-assennato-00ab80240/)
-Jésica Llanos
+- Jésica Llanos
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)
 
 ### Github
@@ -71,6 +98,6 @@ Jésica Llanos
 - [@Jésica](https://github.com/Jesi10)
 
 ### 📫E-mails
-Kevin Serrano: kevinserrano010@gmail.com
-Benjamin Assennato: benjaassennato@hotmail.com
-Jésica Llanos: teoricas461@gmail.com
+- Kevin Serrano: kevinserrano010@gmail.com
+- Benjamin Assennato: benjaassennato@hotmail.com
+- Jésica Llanos: teoricas461@gmail.com
